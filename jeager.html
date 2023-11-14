@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeager</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Noto+Serif+JP:wght@900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+        *{
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+:root{
+    --clr1:#455d8d;
+    --clr2:#232a37;
+    --clr3:#6b86a2;
+    --clr4:#435b8a;
+    --clr5:#501218;
+
+    --p1:#eca57445;
+    --p2:#d5ab6c45;
+    --p3:#edb38445;
+    --Belanosima: 'Belanosima', sans-serif;
+    --Noto-Jp: 'Noto Serif JP', serif;
+    --Montserrat: 'Montserrat', sans-serif;
+}   
+body
+{
+    height: 100vh;
+    background: whitesmoke;
+}  
+.container
+{
+background: radial-gradient(
+    at left,
+    var(--clr4),
+    var(--clr3),
+    var(--clr1)
+);
+height: 100%;
+width: 100%;
+
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+
+position: relative;
+}
+.left,
+.right{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.container .right > img
+{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    user-select: none;
+    pointer-events: none;
+
+}
+.texts{
+    position: absolute;
+    bottom: 5%;
+    right: 30%;
+    /* z-index: 1; */
+    isolation: isolate;
+    user-select: none;
+    pointer-events: none;
+
+    /* opacity: 0; */
+}
+.left .texts > .Jp-text
+{
+    font-size: 4.5rem;
+    font-family: var(--Noto-Jp);
+    color: #272727;
+    line-height: 1.1;
+    z-index: 1;
+
+}
+.left .texts > h2
+{
+    font-size: 6rem;
+    font-family: var(--Belanosima);
+    letter-spacing: 1px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50% , -50%);
+    z-index: -1;
+}
+.headings
+{
+    position: absolute;
+    top: 1%;
+    right: 1%;
+}
+.Heading{
+    font-size: 3rem;
+    float: right;
+    color: #272727;
+    font-family: var(--Montserrat);
+}
+
+.Heading  span
+{
+    color: white;
+    font-family: var(--Belanosima);
+}
+.Sub-Heading
+{
+    float: right;
+    font-size: 18px;
+    font-family: sans-serif;
+    color: whitesmoke;
+    width: 80%;
+    margin-block: 1em;
+    line-height: 1.3;
+}
+.text-over
+{
+    position: relative;
+}
+
+/*  */
+.mouse-ball
+{
+    height: 40px;
+    aspect-ratio: 1;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    position: absolute;
+    top: 86%;
+    left: 50%;
+    animation: scrollDown ease-in-out 2s infinite;
+    user-select: none;
+    pointer-events: none;
+
+}
+@keyframes scrollDown 
+{
+to{
+    opacity: 0;
+    top: 70%;
+}    
+}
+
+@media (max-width:745px) 
+{
+    .container
+{
+grid-template-columns:  1fr;
+z-index: 1;
+} 
+.right
+{
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+.Sub-Heading
+{
+    width: 100%;
+    color:#efc69a;
+}
+.Heading > span{
+    color:#efc69a;
+}
+
+.texts
+{
+    left: 30%;
+}
+.mouse-ball
+{
+    left: 85%;
+}
+.left .texts > .Jp-text
+{
+    /* font-size: 2.5rem; */
+    color: #FC4906;
+    transform: translateX(30%);
+}
+.left .texts > h2{
+  /* font-size: 3rem; */
+}
+}
+@media (max-width:400px)
+ {
+.right{
+    top: 0%;
+
+}    
+}
+
+
+.pop-up
+{ 
+    position: fixed;
+    bottom: 2%;
+    left: 2%;
+
+    height: 10rem;
+    width: 300px;
+    background:linear-gradient(
+        -45deg,
+        var(--p1),
+        var(--p2),
+        var(--p3)
+    );
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    border: 1.1px solid var(--p3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: .5rem;
+
+    /* transform: translateY(200%); */
+    z-index: 400;
+}
+.pop-up > h3{
+    font-family: var(--Montserrat);
+    color: white;
+    text-align: center;
+    border-bottom: 1.1px solid var(--p2);
+    line-height: 2;
+}
+.pop-up form{
+    text-align: center;
+    width: 100%;
+}
+.pop-up input
+{
+height: 2rem;
+width: 90%;
+border-radius: 12px;
+border: 1.4px solid var(--p3);
+background-color: transparent;
+outline: 0;
+font-family: var(--Montserrat);
+padding-left: 1rem;
+color: #272727;
+left: 1px;
+}
+input::placeholder
+{
+    color: #272727;
+    padding-left: .5rem;
+    letter-spacing: 1px;
+}
+.pop-up  button
+{
+    height: 2rem;
+    width: 90%;
+    border-radius: 12px;
+    border: 1.4px solid var(--clr4);
+    background-color: var(--clr4);
+    outline: 0;
+    color: whitesmoke;
+    font-size: 18px;
+    cursor: pointer;
+    transition:
+     400ms background ease,
+     border 410ms ease,
+     color 390ms ease-in-out
+    ;
+}
+.pop-up button:hover
+{
+    background: #272727;
+    border: 1.4px solid #272727;
+    color: var(--clr3);
+}
+.close-btn
+{
+position: absolute;
+top: 1%;
+right: 1%;
+border-radius: 50%;
+color: white;
+cursor: pointer;
+height: 25px;
+width: 25px;
+transition:background 250ms ease-in-out  ;
+}
+.close-btn:hover
+{
+background: var(--p2);
+}
+.close-btn span
+{
+font-size: 20px;
+font-family: var(--Montserrat);
+padding: .35em;
+}
+
+    </style>
+
+    <div class="container">
+        
+        <div class="right">
+            <img src="./imgs/jeager-p-removebg-preview.png" alt="">
+    </div>
+    <div class="left">
+        <div class="texts">
+            <h1 class="Jp-text">イ<br>ェ<br>ガ<br></h1>
+            <h2>Jaegers</h2>
+        </div>
+
+        <div class="headings">
+            <div class="text-over">
+        <h1 class="Heading">
+            Pacific Rim <span>[Jaegers]</span> 
+        </h1>
+    </div>
+    <p class="Sub-Heading">
+        Pacific Rim is a 2013 American science fiction monster film directed by Guillermo del Toro, starring Charlie Hunnam, Idris Elba, Rinko Kikuchi, Charlie Day, Robert Kazinsky, Max Martini, and Ron Perlman, and the first film in the Pacific Rim franchise.
+    </p>
+</div>
+</div>
+
+    <div class="mouse-ball"></div>
+
+
+    <div class="pop-up" id="popup">
+        <div class="close-btn">
+        <span>
+            &times;
+        </span>
+        </div>
+        <h3>Subscribe Us?</h3>
+ <form action="">
+    <input type="text" placeholder="Email*" />
+</form>
+<button>Subscibe</button>
+    </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <script>
+
+const tl = gsap.timeline({default:{duration:1}})
+tl
+.from('.Heading',
+{
+    opacity:1,
+    y:-150,
+    ease:'power4'
+}, "+=.5")
+
+.from('.Sub-Heading' , {
+    opacity:0,
+    y:50,
+    ease:'bounce'
+})
+
+.from('.texts',
+{
+    opacity:0,
+    ease:'power4'
+}, '+=.51')
+
+
+const closeBtn = document.querySelector('.close-btn');
+const popContiner = document.getElementById('popup');
+
+const poptl = gsap.timeline({
+    default:
+        {
+            duration:2 , 
+        }
+    })
+    
+    poptl
+    .from(popContiner, 
+    {
+        y:300,
+        ease:'back'
+    })
+closeBtn.addEventListener('click' , () => {
+    poptl.reverse(1);
+})
+    </script>
+</body>
+</html>
